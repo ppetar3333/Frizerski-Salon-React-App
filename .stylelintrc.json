@@ -1,0 +1,18 @@
+{
+    "extends": "stylelint-config-standard",
+    "plugins": [
+        "stylelint-scss"
+    ],
+    "rules": {
+        "block-no-empty": true,
+        "length-zero-no-unit": true,
+        "max-nesting-depth": 3,
+        "number-no-trailing-zeros": true,
+        "selector-max-id": 0,
+        "at-rule-no-unknown": null,
+        "scss/at-rule-no-unknown": true
+    },
+    "ignoreFiles": [
+        "src/dist/index.css"
+    ]
+}

@@ -1,0 +1,68 @@
+{
+  "name": "start-up",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0",
+    "web-vitals": "^2.1.2",
+    "async": "^3.2.1",
+    "autoprefixer": "^10.3.7",
+    "browser-sync": "^2.27.5",
+    "cssnano": "^5.0.8",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-consolidate": "^0.2.0",
+    "gulp-iconfont-css": "^3.0.0",
+    "gulp-iconfont-template": "^0.0.3",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-sketch": "^1.0.5",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-svg2ttf": "^2.0.1",
+    "gulp-svgicons2svgfont": "^6.0.0",
+    "gulp-terser": "^2.1.0",
+    "gulp-ttf2eot": "^1.1.2",
+    "gulp-ttf2woff": "^1.1.1",
+    "gulp-ttf2woff2": "^4.0.1",
+    "postcss-cli": "^9.0.1",
+    "sass": "^1.43.2",
+    "stylelint-scss": "^3.21.0"
+  },
+  "devDependencies": {
+    "gulp-iconfont": "^11.0.0",
+    "gulp-stylelint": "^13.0.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "underscore": "^1.13.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
