@@ -13,6 +13,7 @@ function KorisniciList() {
 
     const getKorisnici = async () => {
         const response = await axios.get('http://localhost:5000/korisnici');
+        console.log(response.data);
         setKorisnici(response.data)
     }
 
