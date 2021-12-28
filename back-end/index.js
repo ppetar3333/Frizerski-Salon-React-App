@@ -5,7 +5,7 @@ import korisnikRoutes from "./routes/KorisniciRoutes.js";
 import cors from "cors";
  
 const app = express();
- 
+
 try {
     await db.authenticate();
     console.log('Database connected...');
