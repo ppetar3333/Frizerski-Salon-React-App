@@ -1,0 +1,15 @@
+input {
+  border: 1px solid gray;
+  width: 100%;
+  height: 30px;
+  margin: $margin-tb-m;
+}
+
+.log-in {
+  @include absolute-center;
+  @include center-flex-box;
+
+  width: 300px;
+  height: 300px;
+  border: 1px solid gray;
+}

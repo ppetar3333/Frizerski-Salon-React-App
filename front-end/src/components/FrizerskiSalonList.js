@@ -31,7 +31,7 @@ function FrizerskiSalonList () {
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody>
                     { frizerskiSaloni.map((frizerskiSalon, index) => (
                         <tr key={ frizerskiSalon.id }>
