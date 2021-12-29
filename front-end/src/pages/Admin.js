@@ -7,7 +7,7 @@ function Admin() {
 
     const odjava = () => {
         localStorage.removeItem("korisnik","admin");
-        navigate('/login');
+        navigate('/');
     }
 
     return (

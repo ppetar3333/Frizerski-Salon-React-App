@@ -7,7 +7,7 @@ function Clan() {
 
     const odjava = () => {
         localStorage.removeItem("korisnik","clan");
-        navigate('/login');
+        navigate('/');
     }
     
     return(

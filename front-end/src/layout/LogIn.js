@@ -44,7 +44,7 @@ function LogIn() {
                         <label className="log-in__password">Password</label>
                         <input className="log-in__password-i" type="password" onChange={(e) => {setLozinka(e.target.value)}} required/> <br />
                         <button className="log-in__button" onClick={login}>Log In</button>
-                        <Link to={'/registracija'}>Registracija</Link>
+                        <p>Do not have account?</p><Link to={'/registracija'}>Registracija</Link>
                     </div>
                 </section>
             </>

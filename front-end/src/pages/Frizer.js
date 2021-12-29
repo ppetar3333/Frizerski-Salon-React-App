@@ -7,7 +7,7 @@ function Frizer() {
 
     const odjava = () => {
         localStorage.removeItem("korisnik","frizer");
-        navigate('/login');
+        navigate('/');
     }
 
     return (
