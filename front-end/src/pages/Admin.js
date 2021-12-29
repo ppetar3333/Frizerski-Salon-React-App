@@ -6,7 +6,7 @@ function Admin() {
     let navigate = useNavigate();
 
     const odjava = () => {
-        localStorage.removeItem("korisnik","admin");
+        localStorage.removeItem("korisnik");
         navigate('/');
     }
 

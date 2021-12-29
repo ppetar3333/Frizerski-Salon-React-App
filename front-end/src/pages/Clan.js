@@ -6,7 +6,7 @@ function Clan() {
     let navigate = useNavigate();
 
     const odjava = () => {
-        localStorage.removeItem("korisnik","clan");
+        localStorage.removeItem("korisnik");
         navigate('/');
     }
     

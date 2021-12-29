@@ -19,20 +19,24 @@ function LogIn() {
                 korisnickoIme: korisnickoIme,
                 lozinka: lozinka,
             })
-            setData(korisnik.data);
+            if(korisnik.data == '') {
+                alert('Greska pri unosu!');
+            } else {
+                setData(korisnik.data);
+            }
         } else {
             alert("Vec ste ulogovani, morate se odjaviti.");
         }
     }
 
     if(data.tipKorisnika === 'frizer') {
-        localStorage.setItem("korisnik","frizer");
+        localStorage.setItem("korisnik", JSON.stringify(data));
         return <Frizer />
     } else if(data.tipKorisnika === 'admin') {
-        localStorage.setItem("korisnik","admin");
+        localStorage.setItem("korisnik", JSON.stringify(data));
         return <Admin />
     } else if(data.tipKorisnika === 'clan'){
-        localStorage.setItem("korisnik","clan");
+        localStorage.setItem("korisnik", JSON.stringify(data));
         return <Clan />
     } else {
         return (
