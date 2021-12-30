@@ -10,22 +10,18 @@ function LogIn() {
     const [data, setData] = useState([]);
 
     const login = async () => {
-        if(korisnickoIme === '' && lozinka === '') {
-            alert('Polja ne smeju biti prazna!')
-        } else {
-            if(localStorage.getItem("korisnik") === null) {
-                const korisnik = await axios.post(`http://localhost:5000/korisnici/${korisnickoIme}/${lozinka}`, {
-                    korisnickoIme: korisnickoIme,
-                    lozinka: lozinka,
-                })
-                if(korisnik.data === '') {
-                    alert('Greska pri unosu!');
-                } else {
-                    setData(korisnik.data);
-                }
+        if(localStorage.getItem("korisnik") === null) {
+            const korisnik = await axios.post(`http://localhost:5000/korisnici/${korisnickoIme}/${lozinka}`, {
+                korisnickoIme: korisnickoIme,
+                lozinka: lozinka,
+            })
+            if(korisnik.data === '') {
+                alert('Greska pri unosu!');
             } else {
-                alert("Vec ste ulogovani, morate se odjaviti.");
+                setData(korisnik.data);
             }
+        } else {
+            alert("Vec ste ulogovani, morate se odjaviti.");
         }
     }
 
@@ -40,18 +36,16 @@ function LogIn() {
         return <Navigate to='clan' />
     } else {
         return (
-            <>
-                <section className="log-in">
-                    <div className="log-in__form">
-                        <label className="log-in__username">Username</label>
-                        <input className="log-in__username-i" type="text" onChange={(e) => {setKorisnickoIme(e.target.value)}} required/> <br />
-                        <label className="log-in__password">Password</label>
-                        <input className="log-in__password-i" type="password" onChange={(e) => {setLozinka(e.target.value)}} required/> <br />
-                        <button className="log-in__button" onClick={login}>Log In</button>
-                        <p>Do not have account?<Link to={'/registracija'}> Registracija</Link></p>
-                    </div>
-                </section>
-            </>
+            <form className="log-in" method="get" action="#">
+                <div className="log-in__form">
+                    <label className="log-in__username">Username</label>
+                    <input className="log-in__username-i" type="text" onChange={(e) => {setKorisnickoIme(e.target.value)}} required/> <br />
+                    <label className="log-in__password">Password</label>
+                    <input className="log-in__password-i" type="password" onChange={(e) => {setLozinka(e.target.value)}} required/> <br />
+                    <button className="log-in__button" onClick={login} type="submit">Log In</button>
+                    <p>Do not have account?<Link to={'/registracija'}> Registracija</Link></p>
+                </div>
+            </form>
         )
     }
 }

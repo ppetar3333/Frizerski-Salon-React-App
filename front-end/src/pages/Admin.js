@@ -10,11 +10,17 @@ function Admin() {
         navigate('/');
     }
 
+    // pregled za svojih podataka i izmena
+    // sve moze da pregleda, izmeni, obrise
+    // clanove moze da blokira i odblokira
+    
     return (
-        <>
-            <h1>Admin</h1>
-            <button onClick={odjava}>Odjavi se</button>
-        </>
+        <section className="admin container">
+            <div className="admin__wrapper">
+                <h1 className="admin__title">Admin</h1>
+                <button className="admin__logout" onClick={odjava}>Odjavi se</button>
+            </div>
+        </section>
     )
 }
 

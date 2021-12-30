@@ -10,11 +10,18 @@ function Clan() {
         navigate('/');
     }
     
+    // pregled za svojih podataka i izmena
+    // pretraga frizera i sortiranje
+    // pregled svih frizera
+    // zakazivanje termina kod odbranog frizer
+
     return(
-        <>
-            <h1>clan</h1>
-            <button onClick={odjava}>Odjavi se</button>
-        </>
+        <section className="clan container">
+            <div className="clan__wrapper">
+                <h1 className="clan__title">Clan</h1>
+                <button className="clan__logout" onClick={odjava}>Odjavi se</button>
+            </div>
+        </section>
     )
 }
 
