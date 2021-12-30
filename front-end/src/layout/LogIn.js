@@ -1,10 +1,7 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from "axios";
-import Frizer from "../pages/Frizer";
-import Clan from "../pages/Clan";
-import Admin from "../pages/Admin";
 
 function LogIn() {
 
@@ -12,32 +9,35 @@ function LogIn() {
     const [lozinka, setLozinka] = useState('');
     const [data, setData] = useState([]);
 
-    
     const login = async () => {
-        if(localStorage.getItem("korisnik") === null) {
-            const korisnik = await axios.post(`http://localhost:5000/korisnici/${korisnickoIme}/${lozinka}`, {
-                korisnickoIme: korisnickoIme,
-                lozinka: lozinka,
-            })
-            if(korisnik.data == '') {
-                alert('Greska pri unosu!');
-            } else {
-                setData(korisnik.data);
-            }
+        if(korisnickoIme === '' && lozinka === '') {
+            alert('Polja ne smeju biti prazna!')
         } else {
-            alert("Vec ste ulogovani, morate se odjaviti.");
+            if(localStorage.getItem("korisnik") === null) {
+                const korisnik = await axios.post(`http://localhost:5000/korisnici/${korisnickoIme}/${lozinka}`, {
+                    korisnickoIme: korisnickoIme,
+                    lozinka: lozinka,
+                })
+                if(korisnik.data === '') {
+                    alert('Greska pri unosu!');
+                } else {
+                    setData(korisnik.data);
+                }
+            } else {
+                alert("Vec ste ulogovani, morate se odjaviti.");
+            }
         }
     }
 
     if(data.tipKorisnika === 'frizer') {
         localStorage.setItem("korisnik", JSON.stringify(data));
-        return <Frizer />
+        return <Navigate to='/frizer' />
     } else if(data.tipKorisnika === 'admin') {
         localStorage.setItem("korisnik", JSON.stringify(data));
-        return <Admin />
+        return <Navigate to='/admin'/>
     } else if(data.tipKorisnika === 'clan'){
         localStorage.setItem("korisnik", JSON.stringify(data));
-        return <Clan />
+        return <Navigate to='clan' />
     } else {
         return (
             <>
@@ -48,7 +48,7 @@ function LogIn() {
                         <label className="log-in__password">Password</label>
                         <input className="log-in__password-i" type="password" onChange={(e) => {setLozinka(e.target.value)}} required/> <br />
                         <button className="log-in__button" onClick={login}>Log In</button>
-                        <p>Do not have account?</p><Link to={'/registracija'}>Registracija</Link>
+                        <p>Do not have account?<Link to={'/registracija'}> Registracija</Link></p>
                     </div>
                 </section>
             </>
