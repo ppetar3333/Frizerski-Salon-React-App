@@ -36,20 +36,19 @@ function FrizerskiSalonList () {
                 }
             </div>
         )
-    } else {
-        return (
-            <div>
-                {
-                    frizerskiSaloni.map((fSalon) => (
-                        <div key={fSalon.id}>
-                            <p>Naziv: <span>{fSalon.naziv}</span></p>
-                            <p>Adresa: <span>{fSalon.adresa}</span></p>
-                        </div>
-                    ))
-                }
-            </div>
-        )
-    }
+    } 
+    return (
+        <div>
+            {
+                frizerskiSaloni.map((fSalon) => (
+                    <div key={fSalon.id}>
+                        <p>Naziv: <span>{fSalon.naziv}</span></p>
+                        <p>Adresa: <span>{fSalon.adresa}</span></p>
+                    </div>
+                ))
+            }
+        </div>
+    )
 }
  
 export default FrizerskiSalonList

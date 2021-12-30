@@ -1,30 +1,18 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import Nav from "../layout/Nav";
 
 function Frizer() {
 
-    let navigate = useNavigate();
     const korisnikLS = localStorage.getItem('korisnik');
     const korisnik = JSON.parse(korisnikLS);
 
-    const odjava = () => {
-        localStorage.removeItem("korisnik");
-        navigate('/');
-    }
-
     return (
         <section>
+            <Nav />
             <div>
                 <div>
-                    <h1>Welcome, {korisnik.ime}</h1>
+                    <h2>Welcome, {korisnik.ime}</h2>
                 </div>
-                <nav>
-                    <ul>
-                        <li><Link to={'/svojiPodaci'}>Svoji Podaci</Link></li>
-                        <li><Link to={'/termini'}>Pregled Termina</Link></li>
-                        <li><button onClick={odjava}>Odjavi se</button></li>
-                    </ul>
-                </nav>
             </div>
         </section>  
     )

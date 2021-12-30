@@ -1,8 +1,43 @@
 import React from "react";
+import { useState } from 'react';
 
 function SvojiPodaci() {
+
+    const korisnikLS = localStorage.getItem('korisnik');
+    const loggedInUser = JSON.parse(korisnikLS);
+    const [ime, setIme] = useState('');
+    const [prezime, setPrezime] = useState('');
+    const [korisnickoIme, setKorisnickoIme] = useState('');
+    const [lozinka, setLozinka] = useState('');
+    const [brTelefona, setBrTelefona] = useState('');
+    const [jmbg, setJmbg] = useState('');
+    const [email, setEmail] = useState('');
+    const [adresa, setAdresa] = useState('');
+
+    const izmeni = (e) => {
+        console.log("izmena");
+    }
+
     return(
-        <h1>Svoji Podaci</h1>
+        <form method="POST" action="#" className="registracija">
+            <label>Ime</label>
+            <input type="text" defaultValue={loggedInUser.ime} onChange={(e) => {setIme(e.target.value)}} required/>
+            <label>Prezime</label>
+            <input type="text" defaultValue={loggedInUser.prezime} onChange={(e) => {setPrezime(e.target.value)}} required/>
+            <label>Korisnicko ime</label>
+            <input type="text" defaultValue={loggedInUser.korisnickoIme} onChange={(e) => {setKorisnickoIme(e.target.value)}} required/>
+            <label>Lozinka</label>
+            <input type="password" defaultValue={loggedInUser.lozinka} onChange={(e) => {setLozinka(e.target.value)}} required/>
+            <label>Broj telefona</label>
+            <input type="number" defaultValue={loggedInUser.brojTelefona} onChange={(e) => {setBrTelefona(e.target.value)}} required/>
+            <label>JMBG</label>
+            <input type="number" defaultValue={loggedInUser.jmbg} onChange={(e) => {setJmbg(e.target.value)}} required/>
+            <label>Email</label>
+            <input type="text" defaultValue={loggedInUser.email} onChange={(e) => {setEmail(e.target.value)}} required/>
+            <label>Adresa</label>
+            <input type="text" defaultValue={loggedInUser.adresa} onChange={(e) => {setAdresa(e.target.value)}} required/>
+            <button type="submit" onClick={izmeni}>Izmeni</button>
+        </form>
     )
 }
 

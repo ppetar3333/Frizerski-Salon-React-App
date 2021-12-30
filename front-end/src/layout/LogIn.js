@@ -44,9 +44,9 @@ function LogIn() {
             <form method="GET" action="login" className="log-in">
                 <div className="log-in__form">
                     <label className="log-in__username">Username</label>
-                    <input className="log-in__username-i" type="text" onChange={(e) => {setKorisnickoIme(e.target.value)}} required/> <br />
+                    <input className="log-in__input" type="text" onChange={(e) => {setKorisnickoIme(e.target.value)}} required/> <br />
                     <label className="log-in__password">Password</label>
-                    <input className="log-in__password-i" type="password" onChange={(e) => {setLozinka(e.target.value)}} required/> <br />
+                    <input className="log-in__input" type="password" onChange={(e) => {setLozinka(e.target.value)}} required/> <br />
                     <button className="log-in__button" onClick={login} type="submit">Log In</button>
                     <p>Do not have account?<Link to={'/registracija'}> Registracija</Link></p>
                 </div>

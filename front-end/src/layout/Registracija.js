@@ -13,7 +13,7 @@ function Registracija() {
     const [adresa, setAdresa] = useState('');
 
     const register = () => {
-        //todo
+        console.log('registracija todo')
     }
 
     return (
