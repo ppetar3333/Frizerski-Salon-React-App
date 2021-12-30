@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Clan() {
 
@@ -16,10 +16,18 @@ function Clan() {
     // zakazivanje termina kod odbranog frizer
 
     return(
-        <section className="clan container">
-            <div className="clan__wrapper">
-                <h1 className="clan__title">Clan</h1>
-                <button className="clan__logout" onClick={odjava}>Odjavi se</button>
+        <section>
+            <div>
+                <div>
+                    <h1>Clan</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li> <Link to='/svojiPodaci'>Svoji Podaci</Link> </li>
+                        <li> <Link to='/pregledFrizera'>Pregled Frizera</Link> </li>
+                        <li> <button onClick={odjava}>Odjavi se</button> </li>
+                    </ul>
+                </nav>
             </div>
         </section>
     )

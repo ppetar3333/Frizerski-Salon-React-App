@@ -10,6 +10,7 @@ import ErrorPage from "./pages/ErrorPage.js";
 import Frizer from "./pages/Frizer.js";
 import Home from "./pages/Home.js";
 import TerminList from './components/TerminList';
+import SvojiPodaci from "./components/SvojiPodaci.js";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/admin' element={<Admin /> } />
         <Route path='/frizer' element={<Frizer />} />
         <Route path='/termini' element={<TerminList /> } />
+        <Route path='svojiPodaci' element={ <SvojiPodaci /> } />
         <Route path='*' element={<ErrorPage /> }/>
       </Routes>
     </Router>

@@ -9,19 +9,24 @@ function LogIn() {
     const [lozinka, setLozinka] = useState('');
     const [data, setData] = useState([]);
 
-    const login = async () => {
-        if(localStorage.getItem("korisnik") === null) {
-            const korisnik = await axios.post(`http://localhost:5000/korisnici/${korisnickoIme}/${lozinka}`, {
-                korisnickoIme: korisnickoIme,
-                lozinka: lozinka,
-            })
-            if(korisnik.data === '') {
-                alert('Greska pri unosu!');
-            } else {
-                setData(korisnik.data);
-            }
+    const login = async (e) => {
+        e.preventDefault();
+        if(korisnickoIme === '' && lozinka === '') {
+            alert('Polja ne smeju biti prazna!')
         } else {
-            alert("Vec ste ulogovani, morate se odjaviti.");
+            if(localStorage.getItem("korisnik") === null) {
+                const korisnik = await axios.post(`http://localhost:5000/korisnici/${korisnickoIme}/${lozinka}`, {
+                    korisnickoIme: korisnickoIme,
+                    lozinka: lozinka,
+                })
+                if(korisnik.data === '') {
+                    alert('Greska pri unosu!');
+                } else {
+                    setData(korisnik.data);
+                }
+            } else {
+                alert("Vec ste ulogovani, morate se odjaviti.");
+            }
         }
     }
 
@@ -33,10 +38,10 @@ function LogIn() {
         return <Navigate to='/admin'/>
     } else if(data.tipKorisnika === 'clan'){
         localStorage.setItem("korisnik", JSON.stringify(data));
-        return <Navigate to='clan' />
+        return <Navigate to='/clan' />
     } else {
         return (
-            <form className="log-in" method="get" action="#">
+            <form method="GET" action="login" className="log-in">
                 <div className="log-in__form">
                     <label className="log-in__username">Username</label>
                     <input className="log-in__username-i" type="text" onChange={(e) => {setKorisnickoIme(e.target.value)}} required/> <br />

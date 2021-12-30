@@ -13,7 +13,6 @@ function KorisniciList() {
 
     const getKorisnici = async () => {
         const response = await axios.get('http://localhost:5000/korisnici');
-        console.log(response.data);
         setKorisnici(response.data)
     }
 
@@ -28,6 +27,9 @@ function KorisniciList() {
                     <th>JMBG</th>
                     <th>Tip Korisnika</th>
                     <th>Izmeni</th>
+                    <th>Obrisi</th>
+                    <th>Blokiraj</th>
+                    <th>Odblokiraj</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +43,9 @@ function KorisniciList() {
                             <td>{korisnik.jmbg}</td>
                             <td>{korisnik.tipKorisnika}</td>
                             <td><Link to={'/izmeni'}>Izmeni</Link></td>
+                            <td><Link to={'/obrisi'}>Obrisi</Link></td>
+                            <td><Link to={'/blokiraj'}>Blokiraj</Link></td>
+                            <td><Link to={'/odblokiraj'}>Odblokiraj</Link></td>
                         </tr>
                     ))
                 }
