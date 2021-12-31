@@ -23,3 +23,16 @@ export const loginKorisnici = async (req,res) => {
         res.json({ message: error.message });
     }
 }
+
+export const samoFrizeri = async (req,res) => {
+    try {
+        const korisnik = await Korisnik.findAll({
+            where: {
+                tipKorisnika: 'frizer'
+            }
+        })
+        res.json(korisnik[0]);
+    } catch (error) {
+        res.json({ message: error.message });
+    }
+}

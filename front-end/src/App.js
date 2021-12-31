@@ -11,6 +11,7 @@ import Frizer from "./pages/Frizer.js";
 import Home from "./pages/Home.js";
 import TerminList from './components/TerminList';
 import SvojiPodaci from "./components/SvojiPodaci.js";
+import PregledFrizera from "./pages/PregledFrizera.js";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/frizer' element={<Frizer />} />
         <Route path='/termini' element={<TerminList /> } />
         <Route path='/svojiPodaci' element={ <SvojiPodaci /> } />
+        <Route path='/pregledFrizera' element={ <PregledFrizera /> } />
         <Route path='*' element={<ErrorPage /> }/>
       </Routes>
     </Router>
