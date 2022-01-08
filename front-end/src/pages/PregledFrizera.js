@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from "axios";
 
 function PregledFrizera() {
@@ -11,12 +12,8 @@ function PregledFrizera() {
     }, []);
 
     const getKorisnici = async () => {
-        const response = await axios.get('http://localhost:5000/korisnici/samoFrizeri');
+        const response = await axios.get('http://localhost:5000/korisnici');
         setKorisnici(response.data);
-    }
-
-    const te = () => {
-        console.log(korisnici);
     }
 
     return (
@@ -29,20 +26,21 @@ function PregledFrizera() {
                         <th>Prezime</th>
                         <th>Broj Telefona</th>
                         <th>Email</th>
-                        <th><button onClick={te}>te</button></th>
+                        <th>Detaljnije</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* {
-                        korisnici.map((korisnik) => (
-                            <tr key={korisnik.id}>
-                                <td>{korisnik.ime}</td>
-                                <td>{korisnik.prezime}</td>
-                                <td>{korisnik.brojTelefona}</td>
-                                <td>{korisnik.email}</td>
+                    {
+                        korisnici.filter((korisnik) => korisnik.tipKorisnika.includes('frizer')).map((kor) => (
+                            <tr key={kor.id}>
+                                <td>{kor.ime}</td>
+                                <td>{kor.prezime}</td>
+                                <td>{kor.brojTelefona}</td>
+                                <td>{kor.tipKorisnika}</td>
+                                <td><Link to={'/frizerPodaci'}>Prikazi</Link></td>
                             </tr>
                         ))
-                    } */}
+                    }
                 </tbody>
             </table>
         </section>

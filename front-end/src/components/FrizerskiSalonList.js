@@ -21,6 +21,11 @@ function FrizerskiSalonList () {
         setfrizerskiSaloni(response.data);
     }
 
+    const obrisi = async (id) => {
+        await axios.delete(`http://localhost:5000/frizerskisalonpodaci/${id}`);
+        getFrizerskiSaloni();
+    }
+
     if(tipKorisnika === 'admin') {
         return (
             <div>
@@ -29,7 +34,7 @@ function FrizerskiSalonList () {
                         <div key={fSalon.id}>
                             <p>Naziv: <span>{fSalon.naziv}</span></p>
                             <p>Adresa: <span>{fSalon.adresa}</span></p>
-                            <button>Obrisi</button>
+                            <button onClick={ () => obrisi(fSalon.id) }>Obrisi</button>
                             <Link to={'/izmeni'}>Izmeni</Link>
                         </div>
                     ))

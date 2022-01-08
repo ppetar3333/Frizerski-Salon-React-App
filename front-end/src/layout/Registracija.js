@@ -17,7 +17,7 @@ function Registracija() {
     }
 
     return (
-        <from method="POST" action="#" className="registracija">
+        <form method="POST" action="#" className="registracija">
             <label>Ime</label>
             <input type="text" onChange={(e) => {setIme(e.target.value)}} required/>
             <label>Prezime</label>
@@ -35,7 +35,7 @@ function Registracija() {
             <label>Adresa</label>
             <input type="text" onChange={(e) => {setAdresa(e.target.value)}} required/>
             <button type="submit" onClick={register}>Register</button>
-        </from>
+        </form>
     )
 }
 

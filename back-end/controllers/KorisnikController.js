@@ -24,15 +24,17 @@ export const loginKorisnici = async (req,res) => {
     }
 }
 
-export const samoFrizeri = async (req,res) => {
+export const deleteKorisnik = async (req, res) => {
     try {
-        const korisnik = await Korisnik.findAll({
+        await Korisnik.destroy({
             where: {
-                tipKorisnika: 'frizer'
+                id: req.params.id
             }
-        })
-        res.json(korisnik[0]);
+        });
+        res.json({
+            "message": "Product Deleted"
+        });
     } catch (error) {
         res.json({ message: error.message });
-    }
+    }  
 }

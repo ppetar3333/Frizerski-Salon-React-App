@@ -16,11 +16,23 @@ function KorisniciList() {
         setKorisnici(response.data)
     }
 
+    const obrisi = async (id) => {
+        await axios.delete(`http://localhost:5000/korisnici/${id}`);
+        getKorisnici();
+    }
+
+    const blokiraj = async (id) => {
+        console.log('todo');
+    }
+
+    const odblokiraj = async (id) => {
+        console.log('todo');
+    }
+
     return(
         <table>
             <thead>
                 <tr>
-                    <th>No</th>
                     <th>Ime</th>
                     <th>Prezime</th>
                     <th>Email</th>
@@ -34,18 +46,17 @@ function KorisniciList() {
             </thead>
             <tbody>
                 {
-                    korisnici.map((korisnik, index) => (
+                    korisnici.map((korisnik) => (
                         <tr key={korisnik.id}>
-                            <td>{ index + 1 }</td>
                             <td>{korisnik.ime}</td>
                             <td>{korisnik.prezime}</td>
                             <td>{korisnik.email}</td>
                             <td>{korisnik.jmbg}</td>
                             <td>{korisnik.tipKorisnika}</td>
                             <td><Link to={'/izmeni'}>Izmeni</Link></td>
-                            <td><Link to={'/obrisi'}>Obrisi</Link></td>
-                            <td><Link to={'/blokiraj'}>Blokiraj</Link></td>
-                            <td><Link to={'/odblokiraj'}>Odblokiraj</Link></td>
+                            <td><button onClick={() => obrisi(korisnik.id)}>Obrisi</button></td>
+                            <td><button onClick={() => blokiraj(korisnik.id)}>Blokiraj</button></td>
+                            <td><button onClick={() => odblokiraj(korisnik.id)}>Odblokiraj</button></td>
                         </tr>
                     ))
                 }
