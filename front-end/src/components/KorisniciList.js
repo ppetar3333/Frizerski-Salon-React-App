@@ -29,6 +29,10 @@ function KorisniciList() {
         console.log('todo');
     }
 
+    const izmeni = (korisnik) => {
+        localStorage.setItem('korisnikIzmena', JSON.stringify(korisnik));
+    }
+
     return(
         <table>
             <thead>
@@ -40,8 +44,7 @@ function KorisniciList() {
                     <th>Tip Korisnika</th>
                     <th>Izmeni</th>
                     <th>Obrisi</th>
-                    <th>Blokiraj</th>
-                    <th>Odblokiraj</th>
+                    <th>Block/Unblock</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,10 +56,20 @@ function KorisniciList() {
                             <td>{korisnik.email}</td>
                             <td>{korisnik.jmbg}</td>
                             <td>{korisnik.tipKorisnika}</td>
-                            <td><Link to={'/izmeni'}>Izmeni</Link></td>
+                            <td><Link to={'/izmenaKorisnika'} onClick={() => izmeni(korisnik)}>Izmeni</Link></td>
                             <td><button onClick={() => obrisi(korisnik.id)}>Obrisi</button></td>
-                            <td><button onClick={() => blokiraj(korisnik.id)}>Blokiraj</button></td>
-                            <td><button onClick={() => odblokiraj(korisnik.id)}>Odblokiraj</button></td>
+                            {
+                                korisnik.tipKorisnika.includes('clan') ? 
+                                    <>
+                                        {
+                                            korisnik.blokiran == false ?  <td><button onClick={() => blokiraj(korisnik.id)}>Blokiraj</button></td> : null
+                                        }
+                                        {
+                                            korisnik.blokiran == true ? <td><button onClick={() => odblokiraj(korisnik.id)}>Odblokiraj</button></td> : null
+                                        }
+                                    </> 
+                                : null
+                            }
                         </tr>
                     ))
                 }

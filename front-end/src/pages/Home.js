@@ -9,7 +9,7 @@ function Home() {
             <div className="header__wrapper">
                 <TypingEffect 
                     eraseDelay={1000} typingDelay={1000} eraseSpeed={50} speed={50} className="header__title" 
-                    text={['Welcome to my website']}>
+                    text={['Welcome to our website']}>
                 </TypingEffect>
                 <FrizerskiSalonList />
                 <Link to="/login" className="header__login">LogIn</Link>

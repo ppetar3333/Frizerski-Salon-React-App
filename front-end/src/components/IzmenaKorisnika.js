@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function SvojiPodaci() {
 
-    const korisnikLS = localStorage.getItem('korisnik');
+    const korisnikLS = localStorage.getItem('korisnikIzmena');
     const loggedInUser = JSON.parse(korisnikLS);
     const [ime, setIme] = useState('');
     const [prezime, setPrezime] = useState('');
@@ -19,7 +20,7 @@ function SvojiPodaci() {
     }
 
     return(
-        <form method="POST" action="#" className="registracija">
+        <form method="POST" action="#">
             <label>Ime</label>
             <input type="text" defaultValue={loggedInUser.ime} onChange={(e) => {setIme(e.target.value)}} required/>
             <label>Prezime</label>
@@ -37,6 +38,15 @@ function SvojiPodaci() {
             <label>Adresa</label>
             <input type="text" defaultValue={loggedInUser.adresa} onChange={(e) => {setAdresa(e.target.value)}} required/>
             <button type="submit" onClick={izmeni}>Izmeni</button>
+            {
+                loggedInUser.tipKorisnika.includes('clan') ? <Link to='/clan'>Cancel</Link> : null
+            }
+            {
+                loggedInUser.tipKorisnika.includes('admin') ? <Link to='/admin'>Cancel</Link> : null
+            }
+            {
+                loggedInUser.tipKorisnika.includes('frizer') ? <Link to='/frizer'>Cancel</Link> : null
+            }
         </form>
     )
 }

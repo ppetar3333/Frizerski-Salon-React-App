@@ -10,8 +10,10 @@ import ErrorPage from "./pages/ErrorPage.js";
 import Frizer from "./pages/Frizer.js";
 import Home from "./pages/Home.js";
 import TerminList from './components/TerminList';
-import SvojiPodaci from "./components/SvojiPodaci.js";
+import IzmenaKorisnika from "./components/IzmenaKorisnika.js";
 import PregledFrizera from "./pages/PregledFrizera.js";
+import IzmeniFrizerskiSalon from "./pages/IzmenaFrizerskogSalona.js";
+import FrizerZaPrikaz from "./pages/FrizerZaPrikaz.js";
 
 function App() {
   return (
@@ -26,8 +28,10 @@ function App() {
         <Route path='/admin' element={<Admin /> } />
         <Route path='/frizer' element={<Frizer />} />
         <Route path='/termini' element={<TerminList /> } />
-        <Route path='/svojiPodaci' element={ <SvojiPodaci /> } />
+        <Route path='/izmenaKorisnika' element={ <IzmenaKorisnika /> } />
         <Route path='/pregledFrizera' element={ <PregledFrizera /> } />
+        <Route path='/izmeniFrizerskiSalon' element={ <IzmeniFrizerskiSalon /> } />
+        <Route path='/frizerZaPrikaz' element={ <FrizerZaPrikaz /> } />
         <Route path='*' element={<ErrorPage /> }/>
       </Routes>
     </Router>

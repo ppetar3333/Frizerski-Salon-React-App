@@ -26,6 +26,10 @@ function FrizerskiSalonList () {
         getFrizerskiSaloni();
     }
 
+    const izmeni = (fSalon) => {
+        localStorage.setItem('frizerskiSalon', JSON.stringify(fSalon));
+    }
+
     if(tipKorisnika === 'admin') {
         return (
             <div>
@@ -35,7 +39,7 @@ function FrizerskiSalonList () {
                             <p>Naziv: <span>{fSalon.naziv}</span></p>
                             <p>Adresa: <span>{fSalon.adresa}</span></p>
                             <button onClick={ () => obrisi(fSalon.id) }>Obrisi</button>
-                            <Link to={'/izmeni'}>Izmeni</Link>
+                            <Link to={'/izmeniFrizerskiSalon'} onClick={() => izmeni(fSalon)}>Izmeni</Link>
                         </div>
                     ))
                 }

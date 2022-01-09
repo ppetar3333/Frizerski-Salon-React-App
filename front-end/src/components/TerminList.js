@@ -5,6 +5,8 @@ import axios from 'axios';
 function TerminList() {
 
     const [termin, setTermin] = useState([]);
+    const loggedInUserLS = localStorage.getItem('korisnik');
+    const loggedInUser = JSON.parse(loggedInUserLS);
 
     useEffect(() => {
         getAllTermini();
@@ -17,7 +19,7 @@ function TerminList() {
 
     return(
         <section>
-            <h3>Termini</h3>
+            <h3>Svi Termini</h3>
             <table>
                 <thead>
                     <tr>
@@ -26,17 +28,27 @@ function TerminList() {
                         <td>Vreme zavrsetka</td>
                         <td>Frizer</td>
                         <td>Clan</td>
+                        <td>Prihvati</td>
+                        <td>Otkazi</td>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        termin.map((termini) => (
+                        termin.filter((termin) => termin.frizerID === loggedInUser.id).map((termini) => (
                             <tr key={termini.id}>
                                 <td>{termini.datum}</td>
                                 <td>{termini.vremePocetka}</td>
                                 <td>{termini.vremeZavrsetka}</td>
                                 <td>{termini.frizerID}</td>
                                 <td>{termini.clanID}</td>
+                                {
+                                    termini.statusTermina.includes('slobodan') ? 
+                                    <>
+                                        <td><button>Prihvati</button></td>
+                                        <td><button>Otkazi</button></td>
+                                    </> 
+                                    : null
+                                }
                             </tr>
                         ))
                     }

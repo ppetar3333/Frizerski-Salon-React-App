@@ -16,6 +16,10 @@ function PregledFrizera() {
         setKorisnici(response.data);
     }
 
+    const prikazi = (kor) => {
+        localStorage.setItem('frizerZaPrikaz', JSON.stringify(kor));
+    }
+
     return (
         <section>
             <h2>Pregled Frizera</h2>
@@ -36,8 +40,8 @@ function PregledFrizera() {
                                 <td>{kor.ime}</td>
                                 <td>{kor.prezime}</td>
                                 <td>{kor.brojTelefona}</td>
-                                <td>{kor.tipKorisnika}</td>
-                                <td><Link to={'/frizerPodaci'}>Prikazi</Link></td>
+                                <td>{kor.email}</td>
+                                <td><Link to={'/frizerZaPrikaz'} onClick={() => prikazi(kor)}>Prikazi</Link></td>
                             </tr>
                         ))
                     }

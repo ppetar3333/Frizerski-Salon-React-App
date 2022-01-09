@@ -13,15 +13,19 @@ function Nav(){
     }
 
     const odjava = () => {
-        localStorage.removeItem("korisnik");
+        localStorage.clear();
         navigate('/');
     }
-    
+
+    const setUser = () => {
+        localStorage.setItem('korisnikIzmena', korisnikLS);
+    }
+
     if(tipKorisnika === 'admin') {
         return(
             <nav>
                 <ul>
-                    <li> <Link to={'/svojiPodaci'}>Svoji Podaci</Link> </li>
+                    <li> <Link to={'/izmenaKorisnika'} onClick={() => setUser()}>Svoji Podaci</Link> </li>
                     <li> <Link to={'/salonPodaci'}>Frizerski Salon</Link> </li>
                     <li> <Link to={'/korisniciPodaci'}>Korisnici</Link> </li>
                     <li> <Link to={'/termini'}>Termini</Link> </li>
@@ -33,7 +37,7 @@ function Nav(){
         return(
             <nav>
                 <ul>
-                    <li> <Link to='/svojiPodaci'>Svoji Podaci</Link> </li>
+                    <li> <Link to='/izmenaKorisnika' onClick={() => setUser()}>Svoji Podaci</Link> </li>
                     <li> <Link to='/pregledFrizera'>Pregled Frizera</Link> </li>
                     <li> <button onClick={odjava}>Odjavi se</button> </li>
                 </ul>
@@ -43,7 +47,7 @@ function Nav(){
         return(
             <nav>
                 <ul>
-                    <li><Link to={'/svojiPodaci'}>Svoji Podaci</Link></li>
+                    <li><Link to={'/izmenaKorisnika'} onClick={() => setUser()}>Svoji Podaci</Link></li>
                     <li><Link to={'/termini'}>Pregled Termina</Link></li>
                     <li><button onClick={odjava}>Odjavi se</button></li>
                 </ul>
