@@ -3,15 +3,15 @@ import Nav from "../layout/Nav";
 
 function Clan() {
 
-    const korisnikLS = localStorage.getItem('korisnik');
-    const korisnik = JSON.parse(korisnikLS);
+    const userLS = localStorage.getItem('korisnik');
+    const user = JSON.parse(userLS);
     
     return(
         <section>
             <Nav />
             <div>
                 <div>
-                    <h2>Welcome, {korisnik.ime}</h2>
+                    <h2>Welcome, {user.ime}</h2>
                 </div>
             </div>
         </section>

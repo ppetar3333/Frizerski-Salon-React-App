@@ -1,0 +1,31 @@
+nav {
+  background: $nav-gray;
+}
+
+.nav__img {
+  width: 70px;
+}
+
+.nav__list {
+  display: flex;
+  padding: 15px 0;
+}
+
+.nav__content {
+  display: flex;
+  margin-left: auto;
+}
+
+.nav__item {
+  margin: 20px 8px;
+}
+
+.nav__link {
+  color: $white;
+  font-size: 15px;
+}
+
+.nav__link:hover {
+  color: rgb(202, 195, 195);
+  transition: 0.3s ease-in-out;
+}

@@ -2,51 +2,56 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import Nav from "../layout/Nav";
 
 function PregledFrizera() {
 
-    const [korisnici, setKorisnici] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        getKorisnici();
+        getUsers();
     }, []);
 
-    const getKorisnici = async () => {
+    const getUsers = async () => {
         const response = await axios.get('http://localhost:5000/korisnici');
-        setKorisnici(response.data);
+        setUsers(response.data);
     }
 
-    const prikazi = (kor) => {
-        localStorage.setItem('frizerZaPrikaz', JSON.stringify(kor));
+    const showUser = (usr) => {
+        localStorage.setItem('frizerZaPrikaz', JSON.stringify(usr));
     }
 
     return (
-        <section>
-            <h2>Pregled Frizera</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ime</th>
-                        <th>Prezime</th>
-                        <th>Broj Telefona</th>
-                        <th>Email</th>
-                        <th>Detaljnije</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        korisnici.filter((korisnik) => korisnik.tipKorisnika.includes('frizer')).map((kor) => (
-                            <tr key={kor.id}>
-                                <td>{kor.ime}</td>
-                                <td>{kor.prezime}</td>
-                                <td>{kor.brojTelefona}</td>
-                                <td>{kor.email}</td>
-                                <td><Link to={'/frizerZaPrikaz'} onClick={() => prikazi(kor)}>Prikazi</Link></td>
-                            </tr>
-                        ))
-                    }
-                </tbody>
-            </table>
+        <section className="show-frizer">
+            <div className="show-frizer__nav">
+                <Nav />
+            </div>
+            <div className="show-frizer__wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Broj Telefona</th>
+                            <th>Email</th>
+                            <th>Detaljnije</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            users.filter((user) => user.tipKorisnika.includes('frizer')).map((usr) => (
+                                <tr key={usr.id}>
+                                    <td>{usr.ime}</td>
+                                    <td>{usr.prezime}</td>
+                                    <td>{usr.brojTelefona}</td>
+                                    <td>{usr.email}</td>
+                                    <td><Link to={'/frizerZaPrikaz'} onClick={() => showUser(usr)}>Prikazi</Link></td>
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
         </section>
     )
 

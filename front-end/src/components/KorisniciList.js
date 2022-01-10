@@ -2,79 +2,87 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Nav from "../layout/Nav";
 
 function KorisniciList() {
 
-    const [korisnici, setKorisnici] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        getKorisnici();
+        getUsers();
     }, []);
 
-    const getKorisnici = async () => {
+    const getUsers = async () => {
         const response = await axios.get('http://localhost:5000/korisnici');
-        setKorisnici(response.data)
+        setUsers(response.data)
     }
 
-    const obrisi = async (id) => {
+    const deleteOne = async (id) => {
         await axios.delete(`http://localhost:5000/korisnici/${id}`);
-        getKorisnici();
+        getUsers();
     }
 
-    const blokiraj = async (id) => {
+    const blockOne = async (id) => {
         console.log('todo');
     }
 
-    const odblokiraj = async (id) => {
+    const unblockOne = async (id) => {
         console.log('todo');
     }
 
-    const izmeni = (korisnik) => {
+    const changeOne = (korisnik) => {
         localStorage.setItem('korisnikIzmena', JSON.stringify(korisnik));
     }
 
     return(
-        <table>
-            <thead>
-                <tr>
-                    <th>Ime</th>
-                    <th>Prezime</th>
-                    <th>Email</th>
-                    <th>JMBG</th>
-                    <th>Tip Korisnika</th>
-                    <th>Izmeni</th>
-                    <th>Obrisi</th>
-                    <th>Block/Unblock</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    korisnici.map((korisnik) => (
-                        <tr key={korisnik.id}>
-                            <td>{korisnik.ime}</td>
-                            <td>{korisnik.prezime}</td>
-                            <td>{korisnik.email}</td>
-                            <td>{korisnik.jmbg}</td>
-                            <td>{korisnik.tipKorisnika}</td>
-                            <td><Link to={'/izmenaKorisnika'} onClick={() => izmeni(korisnik)}>Izmeni</Link></td>
-                            <td><button onClick={() => obrisi(korisnik.id)}>Obrisi</button></td>
-                            {
-                                korisnik.tipKorisnika.includes('clan') ? 
-                                    <>
-                                        {
-                                            korisnik.blokiran == false ?  <td><button onClick={() => blokiraj(korisnik.id)}>Blokiraj</button></td> : null
-                                        }
-                                        {
-                                            korisnik.blokiran == true ? <td><button onClick={() => odblokiraj(korisnik.id)}>Odblokiraj</button></td> : null
-                                        }
-                                    </> 
-                                : null
-                            }
+        <section className="users">
+            <div className="users__nav">
+                <Nav />
+            </div>
+            <div className="users__wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ime</th>
+                            <th>Prezime</th>
+                            <th>Email</th>
+                            <th>JMBG</th>
+                            <th>Tip Korisnika</th>
+                            <th>Izmeni</th>
+                            <th>Obrisi</th>
+                            <th>Block/Unblock</th>
                         </tr>
-                    ))
-                }
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>
+                        {
+                            users.map((user) => (
+                                <tr key={user.id}>
+                                    <td>{user.ime}</td>
+                                    <td>{user.prezime}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.jmbg}</td>
+                                    <td>{user.tipKorisnika}</td>
+                                    <td><Link to={'/izmenaKorisnika'} onClick={() => changeOne(user)}>Izmeni</Link></td>
+                                    <td><button onClick={() => deleteOne(user.id)}>Obrisi</button></td>
+                                    {
+                                        user.tipKorisnika.includes('clan') ? 
+                                            <>
+                                                {
+                                                    user.blokiran === false ?  <td><button onClick={() => blockOne(user.id)}>Blokiraj</button></td> : null
+                                                }
+                                                {
+                                                    user.blokiran === true ? <td><button onClick={() => unblockOne(user.id)}>Odblokiraj</button></td> : null
+                                                }
+                                            </> 
+                                        : null
+                                    }
+                                </tr>
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
     )
 }
 

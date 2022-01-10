@@ -1,59 +1,94 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import logo from '../images/logo.svg';
 
 function Nav(){
 
-    let navigate = useNavigate();
-    const korisnikLS = localStorage.getItem('korisnik');
-    let tipKorisnika = '';
+    const userLS = localStorage.getItem('korisnik');
+    let typeOfUser = '';
 
-    if(korisnikLS !== null) {
-        const parsed = JSON.parse(korisnikLS);
-        tipKorisnika = parsed.tipKorisnika;
+    if(userLS !== null) {
+        const parsed = JSON.parse(userLS);
+        typeOfUser = parsed.tipKorisnika;
     }
 
-    const odjava = () => {
+    const logout = () => {
         localStorage.clear();
-        navigate('/');
     }
 
     const setUser = () => {
-        localStorage.setItem('korisnikIzmena', korisnikLS);
+        localStorage.setItem('korisnikIzmena', userLS);
     }
 
-    if(tipKorisnika === 'admin') {
+    if(typeOfUser === 'admin') {
         return(
-            <nav>
-                <ul>
-                    <li> <Link to={'/izmenaKorisnika'} onClick={() => setUser()}>Svoji Podaci</Link> </li>
-                    <li> <Link to={'/salonPodaci'}>Frizerski Salon</Link> </li>
-                    <li> <Link to={'/korisniciPodaci'}>Korisnici</Link> </li>
-                    <li> <Link to={'/termini'}>Termini</Link> </li>
-                    <li> <button onClick={odjava}>Odjavi se</button> </li>
-                </ul>
+            <nav className="nav">
+                <div className="nav__wrapper container">
+                    <ul className="nav__list">
+                        <div className="nav__img-wrapper">
+                            <img className="nav__img" src={logo} alt="Logo image" />
+                        </div>
+                        <div className="nav__content">
+                            <li className="nav__item"> <Link className="nav__link" to={'/izmenaKorisnika'} onClick={() => setUser()}>Svoji Podaci</Link> </li>
+                            <li className="nav__item"> <Link className="nav__link" to={'/salonPodaci'}>Frizerski Salon</Link> </li>
+                            <li className="nav__item"> <Link className="nav__link" to={'/korisniciPodaci'}>Korisnici</Link> </li>
+                            <li className="nav__item"> <Link className="nav__link" to={'/'} onClick={() => logout()}>Odjavi se</Link> </li>
+                        </div>
+                    </ul>
+                </div>
             </nav>
         )
-    } else if(tipKorisnika === 'clan'){
+    } else if(typeOfUser === 'clan'){
         return(
-            <nav>
-                <ul>
-                    <li> <Link to='/izmenaKorisnika' onClick={() => setUser()}>Svoji Podaci</Link> </li>
-                    <li> <Link to='/pregledFrizera'>Pregled Frizera</Link> </li>
-                    <li> <button onClick={odjava}>Odjavi se</button> </li>
-                </ul>
+            <nav className="nav">
+                <div className="nav__wrapper  container">
+                    <ul className="nav__list">
+                        <div className="nav__img">
+                            <img className="nav__img" src={logo} alt="Logo image" />
+                        </div>
+                        <div className="nav__content">
+                            <li className="nav__item"> <Link className="nav__link"to='/izmenaKorisnika' onClick={() => setUser()}>Svoji Podaci</Link> </li>
+                            <li className="nav__item"> <Link className="nav__link" to='/pregledFrizera'>Pregled Frizera</Link> </li>
+                            <li className="nav__item"> <Link className="nav__link" to={'/'} onClick={() => logout()}>Odjavi se</Link> </li>
+                        </div>
+                    </ul>
+                </div>
             </nav>
         )
-    } else if(tipKorisnika === 'frizer') {
+    } else if(typeOfUser === 'frizer') {
         return(
-            <nav>
-                <ul>
-                    <li><Link to={'/izmenaKorisnika'} onClick={() => setUser()}>Svoji Podaci</Link></li>
-                    <li><Link to={'/termini'}>Pregled Termina</Link></li>
-                    <li><button onClick={odjava}>Odjavi se</button></li>
-                </ul>
+            <nav className="nav">
+                <div className="nav__wrapper  container">
+                    <ul className="nav__list">
+                        <div className="nav__img">
+                            <img className="nav__img" src={logo} alt="Logo image" />
+                        </div>
+                        <div className="nav__content">
+                            <li className="nav__item"><Link className="nav__link" to={'/izmenaKorisnika'} onClick={() => setUser()}>Svoji Podaci</Link></li>
+                            <li className="nav__item"><Link className="nav__link" to={'/termini'}>Pregled Termina</Link></li>
+                            <li className="nav__item"><Link className="nav__link" to={'/'} onClick={() => logout()}>Odjavi se</Link></li>
+                        </div>
+                    </ul>
+                </div>
             </nav>
         )
     }
+
+    return (
+        <nav className="nav">
+            <div className="nav__wrapper container">
+                <ul className="nav__list">
+                    <div className="nav__img">
+                        <img className="nav__img" src={logo} alt="Logo image" />
+                    </div>
+                    <div className="nav__content">
+                        <li className="nav__item"><Link className="nav__link" to="/login">LogIn</Link></li>
+                        <li className="nav__item"><Link className="nav__link" to="/registracija">Registration</Link></li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    )
 }
 
 export default Nav;

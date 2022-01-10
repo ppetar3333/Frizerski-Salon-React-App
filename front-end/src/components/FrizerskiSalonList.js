@@ -1,45 +1,50 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+import TypingEffect from 'react-typing-effect';
+import Nav from '../layout/Nav';
+
  
 function FrizerskiSalonList () {
-    const [frizerskiSaloni, setfrizerskiSaloni] = useState([]);
-    const korisnikLS = localStorage.getItem('korisnik');
-    let tipKorisnika = '';
 
-    if(korisnikLS !== null) {
-        const parsed = JSON.parse(korisnikLS);
-        tipKorisnika = parsed.tipKorisnika;
+    const [fSalon, setfSaloni] = useState([]);
+    const userLS = localStorage.getItem('korisnik');
+    let typeOfUser = '';
+
+    if(userLS !== null) {
+        const parsed = JSON.parse(userLS);
+        typeOfUser = parsed.tipKorisnika;
     }
 
     useEffect(() => {
-        getFrizerskiSaloni();
+        getFSaloni();
     }, []);
  
-    const getFrizerskiSaloni = async () => {
+    const getFSaloni = async () => {
         const response = await axios.get('http://localhost:5000/frizerskisalonpodaci');
-        setfrizerskiSaloni(response.data);
+        setfSaloni(response.data);
     }
 
-    const obrisi = async (id) => {
+    const deleteOne = async (id) => {
         await axios.delete(`http://localhost:5000/frizerskisalonpodaci/${id}`);
-        getFrizerskiSaloni();
+        getFSaloni();
     }
 
-    const izmeni = (fSalon) => {
+    const changeOne = (fSalon) => {
         localStorage.setItem('frizerskiSalon', JSON.stringify(fSalon));
     }
 
-    if(tipKorisnika === 'admin') {
+    if(typeOfUser === 'admin') {
         return (
             <div>
+                <Nav />
                 {
-                    frizerskiSaloni.map((fSalon) => (
+                    fSalon.map((fSalon) => (
                         <div key={fSalon.id}>
-                            <p>Naziv: <span>{fSalon.naziv}</span></p>
+                            <p><span>{fSalon.naziv}</span></p>
                             <p>Adresa: <span>{fSalon.adresa}</span></p>
-                            <button onClick={ () => obrisi(fSalon.id) }>Obrisi</button>
-                            <Link to={'/izmeniFrizerskiSalon'} onClick={() => izmeni(fSalon)}>Izmeni</Link>
+                            <button onClick={ () => deleteOne(fSalon.id) }>Obrisi</button>
+                            <Link to={'/izmeniFrizerskiSalon'} onClick={() => changeOne(fSalon)}>Izmeni</Link>
                         </div>
                     ))
                 }
@@ -47,12 +52,15 @@ function FrizerskiSalonList () {
         )
     } 
     return (
-        <div>
+        <div className='f-salon'>
             {
-                frizerskiSaloni.map((fSalon) => (
-                    <div key={fSalon.id}>
-                        <p>Naziv: <span>{fSalon.naziv}</span></p>
-                        <p>Adresa: <span>{fSalon.adresa}</span></p>
+                fSalon.map((fSalon) => (
+                    <div key={fSalon.id} className='f-salon__wrapper'>
+                        <TypingEffect 
+                            eraseDelay={1000} typingDelay={1000} eraseSpeed={50} speed={50} className="f-salon__title" 
+                            text={['Welcome To Our Berber Shop - '] + fSalon.naziv + '!'}>
+                        </TypingEffect>
+                        <p className='f-salon__info'>You can find us on address - <span>{fSalon.adresa}</span></p>
                     </div>
                 ))
             }
