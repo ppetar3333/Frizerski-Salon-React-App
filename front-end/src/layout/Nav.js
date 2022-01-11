@@ -26,7 +26,9 @@ function Nav(){
                 <div className="nav__wrapper container">
                     <ul className="nav__list">
                         <div className="nav__img-wrapper">
-                            <img className="nav__img" src={logo} alt="Logo image" />
+                            <Link to={'/admin'}>
+                                <img className="nav__img" src={logo} alt="Logo image" />
+                            </Link>
                         </div>
                         <div className="nav__content">
                             <li className="nav__item"> <Link className="nav__link" to={'/izmenaKorisnika'} onClick={() => setUser()}>Svoji Podaci</Link> </li>
@@ -44,8 +46,10 @@ function Nav(){
                 <div className="nav__wrapper  container">
                     <ul className="nav__list">
                         <div className="nav__img">
-                            <img className="nav__img" src={logo} alt="Logo image" />
-                        </div>
+                            <Link to={'/clan'}>
+                                <img className="nav__img" src={logo} alt="Logo image" />
+                            </Link>                       
+                         </div>
                         <div className="nav__content">
                             <li className="nav__item"> <Link className="nav__link"to='/izmenaKorisnika' onClick={() => setUser()}>Svoji Podaci</Link> </li>
                             <li className="nav__item"> <Link className="nav__link" to='/pregledFrizera'>Pregled Frizera</Link> </li>
@@ -61,7 +65,9 @@ function Nav(){
                 <div className="nav__wrapper  container">
                     <ul className="nav__list">
                         <div className="nav__img">
-                            <img className="nav__img" src={logo} alt="Logo image" />
+                            <Link to={'/frizer'}>
+                                <img className="nav__img" src={logo} alt="Logo image" />
+                            </Link>                        
                         </div>
                         <div className="nav__content">
                             <li className="nav__item"><Link className="nav__link" to={'/izmenaKorisnika'} onClick={() => setUser()}>Svoji Podaci</Link></li>
@@ -79,7 +85,9 @@ function Nav(){
             <div className="nav__wrapper container">
                 <ul className="nav__list">
                     <div className="nav__img">
-                        <img className="nav__img" src={logo} alt="Logo image" />
+                        <Link to={'/'}>
+                            <img className="nav__img" src={logo} alt="Logo image" />
+                        </Link>                    
                     </div>
                     <div className="nav__content">
                         <li className="nav__item"><Link className="nav__link" to="/login">LogIn</Link></li>

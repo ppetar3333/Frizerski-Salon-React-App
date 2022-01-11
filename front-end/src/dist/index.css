@@ -33,6 +33,7 @@ button {
 
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
 }
 
 body::before {
@@ -40,9 +41,9 @@ body::before {
   background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url("../images/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  opacity: 0.7;
+  background-position: center;
+  background-attachment: fixed;
   width: 100%;
-  height: 100%;
   position: absolute;
   top: 0;
   right: 0;
@@ -53,6 +54,7 @@ body::before {
 
 body {
   z-index: 1;
+  min-height: 100%;
 }
 
 .header__info-wrapper {
@@ -67,13 +69,13 @@ body {
 .f-salon__title {
   font-size: 32px;
   font-weight: bold;
-  color: #202020;
+  color: white;
 }
 
 .f-salon__info {
   margin: 30px 0;
   font-weight: 700;
-  color: #202020;
+  color: white;
 }
 
 .log-in__input,
@@ -129,6 +131,47 @@ body {
 }
 
 .log-in__label {
+  color: #202020;
+  font-weight: 600;
+}
+
+.forms__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.forms__form {
+  width: 300px;
+  background: gray;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.forms__input,
+.forms__button {
+  border: 1px solid #292929;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.forms__input {
+  padding: 7px;
+}
+
+.forms__button {
+  background: #292929;
+  color: white;
+  padding: 8px;
+}
+
+.forms__button:hover {
+  background: #464545;
+  transition: 0.3s ease-in-out;
+}
+
+.forms__label {
   color: #202020;
   font-weight: 600;
 }

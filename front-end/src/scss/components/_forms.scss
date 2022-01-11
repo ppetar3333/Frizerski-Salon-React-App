@@ -1,0 +1,39 @@
+.forms__wrapper {
+  @include center-flex-box;
+
+  margin-top: 50px;
+}
+
+.forms__form {
+  width: 300px;
+  background: $gray;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.forms__input,
+.forms__button {
+  border: 1px solid $darker-gray;
+  width: 100%;
+  margin: $margin-tb-s;
+}
+
+.forms__input {
+  padding: 7px;
+}
+
+.forms__button {
+  background: $darker-gray;
+  color: $white;
+  padding: 8px;
+}
+
+.forms__button:hover {
+  background: rgb(70, 69, 69);
+  transition: 0.3s ease-in-out;
+}
+
+.forms__label {
+  color: $dark-gray;
+  font-weight: 600;
+}
