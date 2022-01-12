@@ -39,7 +39,7 @@ function KorisniciList() {
             <div className="users__nav">
                 <Nav />
             </div>
-            <div className="users__wrapper">
+            <div className="users__wrapper table-center">
                 <table>
                     <thead>
                         <tr>
@@ -62,16 +62,16 @@ function KorisniciList() {
                                     <td>{user.email}</td>
                                     <td>{user.jmbg}</td>
                                     <td>{user.tipKorisnika}</td>
-                                    <td><Link to={'/izmenaKorisnika'} onClick={() => changeOne(user)}>Izmeni</Link></td>
-                                    <td><button onClick={() => deleteOne(user.id)}>Obrisi</button></td>
+                                    <td><Link className="table-button" to={'/izmenaKorisnika'} onClick={() => changeOne(user)}>Izmeni</Link></td>
+                                    <td><button className="table-button"  onClick={() => deleteOne(user.id)}>Obrisi</button></td>
                                     {
                                         user.tipKorisnika.includes('clan') ? 
                                             <>
                                                 {
-                                                    user.blokiran === false ?  <td><button onClick={() => blockOne(user.id)}>Blokiraj</button></td> : null
+                                                    user.blokiran === false ?  <td><button className="table-button center" onClick={() => blockOne(user.id)}>Blokiraj</button></td> : null
                                                 }
                                                 {
-                                                    user.blokiran === true ? <td><button onClick={() => unblockOne(user.id)}>Odblokiraj</button></td> : null
+                                                    user.blokiran === true ? <td><button className="table-button center" onClick={() => unblockOne(user.id)}>Odblokiraj</button></td> : null
                                                 }
                                             </> 
                                         : null

@@ -25,33 +25,35 @@ function IzmenaKorisnika() {
             <div className="change-user__nav">
                 <Nav />
             </div>
-            <form method="POST" action="#">
-                <label>Ime</label>
-                <input type="text" defaultValue={loggedInUser.ime} onChange={(e) => {setIme(e.target.value)}} required/>
-                <label>Prezime</label>
-                <input type="text" defaultValue={loggedInUser.prezime} onChange={(e) => {setPrezime(e.target.value)}} required/>
-                <label>Korisnicko ime</label>
-                <input type="text" defaultValue={loggedInUser.korisnickoIme} onChange={(e) => {setKorisnickoIme(e.target.value)}} required/>
-                <label>Lozinka</label>
-                <input type="password" defaultValue={loggedInUser.lozinka} onChange={(e) => {setLozinka(e.target.value)}} required/>
-                <label>Broj telefona</label>
-                <input type="number" defaultValue={loggedInUser.brojTelefona} onChange={(e) => {setBrTelefona(e.target.value)}} required/>
-                <label>JMBG</label>
-                <input type="number" defaultValue={loggedInUser.jmbg} onChange={(e) => {setJmbg(e.target.value)}} required/>
-                <label>Email</label>
-                <input type="text" defaultValue={loggedInUser.email} onChange={(e) => {setEmail(e.target.value)}} required/>
-                <label>Adresa</label>
-                <input type="text" defaultValue={loggedInUser.adresa} onChange={(e) => {setAdresa(e.target.value)}} required/>
-                <button type="submit" onClick={() => changeOne()}>Izmeni</button>
-                {
-                    loggedInUser.tipKorisnika.includes('clan') ? <Link to='/clan'>Cancel</Link> : null
-                }
-                {
-                    loggedInUser.tipKorisnika.includes('admin') ? <Link to='/admin'>Cancel</Link> : null
-                }
-                {
-                    loggedInUser.tipKorisnika.includes('frizer') ? <Link to='/frizer'>Cancel</Link> : null
-                }
+            <form method="POST" action="#" className="forms__wrapper">
+                <div className="forms__form">
+                    <label className="forms__label">Ime</label>
+                    <input className="forms__input" type="text" defaultValue={loggedInUser.ime} onChange={(e) => {setIme(e.target.value)}} required/>
+                    <label className="forms__label">Prezime</label>
+                    <input className="forms__input" type="text" defaultValue={loggedInUser.prezime} onChange={(e) => {setPrezime(e.target.value)}} required/>
+                    <label className="forms__label">Korisnicko ime</label>
+                    <input className="forms__input" type="text" defaultValue={loggedInUser.korisnickoIme} onChange={(e) => {setKorisnickoIme(e.target.value)}} required/>
+                    <label className="forms__label">Lozinka</label>
+                    <input className="forms__input" type="password" defaultValue={loggedInUser.lozinka} onChange={(e) => {setLozinka(e.target.value)}} required/>
+                    <label className="forms__label">Broj telefona</label>
+                    <input className="forms__input" type="number" defaultValue={loggedInUser.brojTelefona} onChange={(e) => {setBrTelefona(e.target.value)}} required/>
+                    <label className="forms__label">Jmbg</label>
+                    <input className="forms__input" type="number" defaultValue={loggedInUser.jmbg} onChange={(e) => {setJmbg(e.target.value)}} required/>
+                    <label className="forms__label">Email</label>
+                    <input className="forms__input" type="text" defaultValue={loggedInUser.email} onChange={(e) => {setEmail(e.target.value)}} required/>
+                    <label className="forms__label">Adresa</label>
+                    <input className="forms__input" type="text" defaultValue={loggedInUser.adresa} onChange={(e) => {setAdresa(e.target.value)}} required/>
+                    <button className="forms__button" type="submit" onClick={() => changeOne()}>Change</button>
+                    {
+                        loggedInUser.tipKorisnika.includes('clan') ? <Link className="forms__button forms__button--cancel" to='/clan'>Cancel</Link> : null
+                    }
+                    {
+                        loggedInUser.tipKorisnika.includes('admin') ? <Link className="forms__button forms__button--cancel" to='/admin'>Cancel</Link> : null
+                    }
+                    {
+                        loggedInUser.tipKorisnika.includes('frizer') ? <Link className="forms__button forms__button--cancel" to='/frizer'>Cancel</Link> : null
+                    }
+                </div>
             </form>
         </section>
     )

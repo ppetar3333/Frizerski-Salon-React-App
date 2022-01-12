@@ -1,0 +1,123 @@
+/* stylelint-disable color-hex-case */
+
+$subtle: #539291;
+$rain: #35485c;
+$mobile-small: 460px;
+$mobile: 720px;
+
+.center {
+  margin-left: 15px;
+}
+
+.table-center {
+  @include absolute-center;
+}
+
+table {
+  display: block;
+  width: 100%;
+}
+
+tr,
+td,
+tbody,
+tfoot {
+  display: block;
+}
+
+th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0 50px;
+}
+
+thead {
+  th {
+    background-color: darken($rain, 6%);
+    color: #fff;
+    border: 1px solid darken($rain, 6%);
+  }
+}
+
+tr {
+  padding-bottom: 10px;
+}
+
+td {
+  padding: 10px 10px 0;
+  text-align: center;
+  color: $white;
+  font-size: 17px;
+
+  &::before {
+    content: attr(data-title);
+    color: lighten($rain, 35%);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    padding-right: 10px;
+    display: block;
+  }
+}
+
+.table-button {
+  line-height: 1;
+  display: inline-block;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 8px;
+  background-color: darken($subtle, 5%);
+}
+
+@media (min-width: $mobile-small) {
+  td {
+    text-align: left;
+    background-color: #385069;
+
+    &::before {
+      display: inline-block;
+      text-align: right;
+      width: 140px;
+    }
+  }
+}
+
+@media (min-width: $mobile) {
+  table {
+    display: table;
+  }
+
+  tr {
+    display: table-row;
+  }
+
+  td,
+  th {
+    display: table-cell;
+    padding: 12px;
+  }
+
+  tbody {
+    display: table-row-group;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  td {
+    border: 1px solid darken($rain, 2%);
+
+    &::before {
+      display: none;
+    }
+  }
+
+  tr:nth-child(2n + 2) {
+    td {
+      background-color: darken($rain, 4%);
+    }
+  }
+}

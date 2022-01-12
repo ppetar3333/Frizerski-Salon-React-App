@@ -26,7 +26,7 @@ function PregledFrizera() {
             <div className="show-frizer__nav">
                 <Nav />
             </div>
-            <div className="show-frizer__wrapper">
+            <div className="show-frizer__wrapper table-center">
                 <table>
                     <thead>
                         <tr>
@@ -45,7 +45,7 @@ function PregledFrizera() {
                                     <td>{usr.prezime}</td>
                                     <td>{usr.brojTelefona}</td>
                                     <td>{usr.email}</td>
-                                    <td><Link to={'/frizerZaPrikaz'} onClick={() => showUser(usr)}>Prikazi</Link></td>
+                                    <td><Link className="table-button" to={'/frizerZaPrikaz'} onClick={() => showUser(usr)}>Prikazi</Link></td>
                                 </tr>
                             ))
                         }

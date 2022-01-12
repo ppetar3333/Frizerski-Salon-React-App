@@ -23,7 +23,7 @@ function TerminList() {
             <div className="termini__nav">
                 <Nav />
             </div>
-            <div className="termini__wrapper">
+            <div className="termini__wrapper table-center">
                 <table>
                     <thead>
                         <tr>
@@ -48,8 +48,8 @@ function TerminList() {
                                     {
                                         termini.statusTermina.includes('slobodan') ? 
                                         <>
-                                            <td><button>Prihvati</button></td>
-                                            <td><button>Otkazi</button></td>
+                                            <td><button className="table-button">Prihvati</button></td>
+                                            <td><button className="table-button">Otkazi</button></td>
                                         </> 
                                         : null
                                     }

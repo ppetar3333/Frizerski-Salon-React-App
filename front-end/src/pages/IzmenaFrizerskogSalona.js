@@ -25,18 +25,18 @@ function IzmeniFrizerskiSalon () {
             <div className="change-salon__nav">
                 <Nav />
             </div>
-            <div className="change-salon__wrapper">
-                <form action="#" method="POST">
-                    <label>ID</label>
-                    <input type="text" defaultValue={salon.id} readOnly />
-                    <label>Naziv</label>
-                    <input type="text" defaultValue={salon.naziv} onChange={(e) => {setNaziv(e.target.value)}} required/>
-                    <label>Adresa</label>
-                    <input type="text" defaultValue={salon.adresa} onChange={(e) => {setAdresa(e.target.value)}} required/>
-                    <button type="submit" onClick={() => izmeni()}>Izmeni</button>
-                    <Link to={'/admin'} onClick={() => cancel()}>Cancel</Link>
-                </form>
-            </div>
+            <form action="#" method="POST" className="forms__wrapper">
+                <div className="forms__form">
+                    <label className="forms__label">ID</label>
+                    <input className="forms__input" type="text" defaultValue={salon.id} readOnly />
+                    <label className="forms__label">Naziv</label>
+                    <input className="forms__input" type="text" defaultValue={salon.naziv} onChange={(e) => {setNaziv(e.target.value)}} required/>
+                    <label className="forms__label">Adresa</label>
+                    <input className="forms__input" type="text" defaultValue={salon.adresa} onChange={(e) => {setAdresa(e.target.value)}} required/>
+                    <button className="forms__button" type="submit" onClick={() => izmeni()}>Izmeni</button>
+                    <Link className="forms__button forms__button--cancel" to={'/admin'} onClick={() => cancel()}>Cancel</Link>
+                </div>
+            </form>
         </section>
     )
 }
