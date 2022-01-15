@@ -1,6 +1,5 @@
 # Frizerski-Salon-React-App
 
 
-
-https://user-images.githubusercontent.com/82830616/149635813-80b6c4a5-dc2e-4ebc-baa6-f4d1ae015289.mp4
+https://user-images.githubusercontent.com/82830616/149635842-51fabfb1-3486-4e50-9c78-ff7ba30af821.mp4
 
