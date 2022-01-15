@@ -38,3 +38,14 @@ export const deleteKorisnik = async (req, res) => {
         res.json({ message: error.message });
     }  
 }
+
+export const createKorisnik = async (req, res) => {
+    try {
+        await Korisnik.create(req.body);
+        res.json({
+            "message": "Product Created"
+        });
+    } catch (error) {
+        res.json({ message: error.message });
+    }  
+}

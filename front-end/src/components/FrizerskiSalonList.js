@@ -36,19 +36,37 @@ function FrizerskiSalonList () {
 
     if(typeOfUser === 'admin') {
         return (
-            <div>
-                <Nav />
-                {
-                    fSalon.map((fSalon) => (
-                        <div key={fSalon.id}>
-                            <p><span>{fSalon.naziv}</span></p>
-                            <p>Adresa: <span>{fSalon.adresa}</span></p>
-                            <button onClick={ () => deleteOne(fSalon.id) }>Obrisi</button>
-                            <Link to={'/izmeniFrizerskiSalon'} onClick={() => changeOne(fSalon)}>Izmeni</Link>
-                        </div>
-                    ))
-                }
-            </div>
+            <section>
+                <div>
+                    <Nav />
+                </div>
+                <div className='table-center'>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Naziv</th>
+                                <th>Adresa</th>
+                                <th>Obrisi</th>
+                                <th>Izmeni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                fSalon.map((fSalon, index) => (
+                                    <tr key={fSalon.id}>
+                                        <td>{index + 1}</td>
+                                        <td>{fSalon.naziv}</td>
+                                        <td>{fSalon.adresa}</td>
+                                        <td><Link className="table-button" to={'/izmeniFrizerskiSalon'} onClick={() => changeOne(fSalon)}>Izmeni</Link></td>
+                                        <td><button className="table-button" onClick={() => deleteOne(fSalon.id)}>Obrisi</button></td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         )
     } 
     return (
@@ -57,7 +75,7 @@ function FrizerskiSalonList () {
                 fSalon.map((fSalon) => (
                     <div key={fSalon.id} className='f-salon__wrapper'>
                         <TypingEffect 
-                            eraseDelay={1000} typingDelay={1000} eraseSpeed={50} speed={50} className="f-salon__title" 
+                            eraseDelay={1000} typingDelay={1000} eraseSpeed={50} speed={50} className="welcome__title" 
                             text={['Welcome To Our Berber Shop - '] + fSalon.naziv + '!'}>
                         </TypingEffect>
                         <p className='f-salon__info'>You can find us on address - <span>{fSalon.adresa}</span></p>

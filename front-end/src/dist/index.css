@@ -66,12 +66,6 @@ body {
   text-align: center;
 }
 
-.f-salon__title {
-  font-size: 32px;
-  font-weight: bold;
-  color: white;
-}
-
 .f-salon__info {
   margin: 30px 0;
   font-weight: 700;
@@ -229,6 +223,17 @@ nav {
           transform: translate(-50%, -50%);
 }
 
+.table-top {
+  width: 30%;
+}
+
+.table-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 70px 0;
+}
+
 table {
   display: block;
   width: 100%;
@@ -328,4 +333,21 @@ th {
   tr:nth-child(2n+2) td {
     background-color: #2e3e4f;
   }
+}
+.welcome__title {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+}
+
+.welcome__wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }

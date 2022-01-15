@@ -1,0 +1,12 @@
+.welcome__title {
+  font-size: 32px;
+  font-weight: bold;
+  color: $white;
+}
+
+.welcome__wrapper {
+  @include absolute-center;
+  @include center-flex-box;
+
+  text-align: center;
+}

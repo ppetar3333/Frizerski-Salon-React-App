@@ -13,6 +13,16 @@ $mobile: 720px;
   @include absolute-center;
 }
 
+.table-top {
+  width: 30%;
+}
+
+.table-wrapper {
+  @include center-flex-box;
+
+  margin: 70px 0;
+}
+
 table {
   display: block;
   width: 100%;
