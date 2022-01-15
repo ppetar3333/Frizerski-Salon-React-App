@@ -3,11 +3,6 @@ import FrizerskiSalonList from '../components/FrizerskiSalonList';
 import Nav from "../layout/Nav";
 
 function Home() {
-    
-    window.onbeforeunload = function() {
-        localStorage.clear();
-    }
-
     return(
         <header className="header">
             <div className="header__wrapper">

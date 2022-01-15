@@ -49,3 +49,18 @@ export const createKorisnik = async (req, res) => {
         res.json({ message: error.message });
     }  
 }
+
+export const updateKorisnik = async (req, res) => {
+    try {
+        await Korisnik.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        });
+        res.json({
+            "message": "Product Updated"
+        });
+    } catch (error) {
+        res.json({ message: error.message });
+    }  
+}

@@ -13,7 +13,7 @@ const FrizerskiSalon = db.define('frizerskisalonpodaci',{
         type: DataTypes.STRING
     },
     adresa:{
-        type: DataTypes.DOUBLE
+        type: DataTypes.STRING
     }
 },{
     freezeTableName: true

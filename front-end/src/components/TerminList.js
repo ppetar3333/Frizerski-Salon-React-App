@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Nav from "../layout/Nav";
+import moment from 'moment';
 
 function TerminList() {
 
@@ -16,6 +17,19 @@ function TerminList() {
     const getAllAppointment = async () => {
         const response = await axios.get('http://localhost:5000/termin');
         setAppointment(response.data);
+    }
+
+    const accept = async (id) => {
+        await axios.patch(`http://localhost:5000/termin/accept/${id}`,{
+            statusTermina: 'zauzet',
+            updatedAt: moment().format('YYYY:MM:DD')
+        });
+        getAllAppointment();
+    }
+
+    const decline = async (id) => {
+        await axios.delete(`http://localhost:5000/termin/delete/${id}`);
+        getAllAppointment();
     }
 
     return(
@@ -48,8 +62,8 @@ function TerminList() {
                                     {
                                         termini.statusTermina.includes('slobodan') ? 
                                         <>
-                                            <td><button className="table-button">Prihvati</button></td>
-                                            <td><button className="table-button">Otkazi</button></td>
+                                            <td><button onClick={() => accept(termini.id)} className="table-button">Prihvati</button></td>
+                                            <td><button onClick={() => decline(termini.id)} className="table-button">Otkazi</button></td>
                                         </> 
                                         : null
                                     }

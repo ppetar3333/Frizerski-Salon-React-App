@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from "../layout/Nav";
+import moment from 'moment';
 
 function KorisniciList() {
 
@@ -23,11 +24,19 @@ function KorisniciList() {
     }
 
     const blockOne = async (id) => {
-        console.log('todo');
+        await axios.patch(`http://localhost:5000/korisnici/${id}`,{
+            blokiran: true,
+            updatedAt: moment().format('YYYY:MM:DD')
+        });
+        getUsers();
     }
 
     const unblockOne = async (id) => {
-        console.log('todo');
+        await axios.patch(`http://localhost:5000/korisnici/${id}`,{
+            blokiran: false,
+            updatedAt: moment().format('YYYY:MM:DD')
+        });
+        getUsers();
     }
 
     const changeOne = (korisnik) => {
